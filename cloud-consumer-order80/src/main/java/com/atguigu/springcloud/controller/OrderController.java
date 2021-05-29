@@ -2,8 +2,8 @@ package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,12 +28,12 @@ public class OrderController {
      * 模拟用户端，用浏览器访问get方便
      */
     @GetMapping("/consumer/payment/create")
-    public CommonResult<Integer> create(Payment payment) {
+    public CommonResult<?> create(Payment payment) {
         return restTemplate.postForObject(PAYMENT_DOMAIN + "/payment/create", payment, CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> getPayment(@PathVariable Long id) {
+    public CommonResult<?> getPayment(@PathVariable Long id) {
         return restTemplate.getForObject(PAYMENT_DOMAIN + "/payment/get/" + id, CommonResult.class);
     }
 }
