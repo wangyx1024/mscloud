@@ -1,0 +1,27 @@
+package com.atguigu.springcloud.service;
+
+import com.atguigu.springcloud.entities.Payment;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.atguigu.springcloud.dao.PaymentDao;
+
+/**
+ * @Author: wyx
+ * @Date: 2021/5/29
+ */
+@Service
+public class PaymentServiceImpl implements PaymentService {
+
+    @Autowired
+    private PaymentDao paymentDao;
+
+    @Override
+    public int create(Payment payment) {
+        return paymentDao.create(payment);
+    }
+
+    @Override
+    public Payment getPaymentById(Long id) {
+        return paymentDao.getPaymentById(id);
+    }
+}
